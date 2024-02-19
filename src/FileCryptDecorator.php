@@ -4,13 +4,24 @@ namespace MariaS431\Lr2;
 
 use SplFileObject;
 
-class FileCryptDecorator {
+class FileCryptDecorator
+{
     private $file;
-    private $key;
+    private $pass;
+    private $iv;
+    private $method;
 
-    public function __construct(SplFileObject $file, string $pass) {
+    public function __construct(
+        SplFileObject $file, 
+        string $pass, 
+        $method = "aes-256-cbc"
+    ) {
         $this->file = $file;
-        $this->key = Key::createNewRandomKey(); // генерация ключа из пароля
+        $this->pass = $pass;
+        $this->method = $method;
+
+        $iv_length = openssl_cipher_iv_length($this->method);
+        $this->iv = openssl_random_pseudo_bytes($iv_length);
     }
 
     public function fread() 
@@ -20,7 +31,7 @@ class FileCryptDecorator {
         if ($fileSize > 0) {
             $this->file->rewind();
             $text = $this->file->fread($fileSize);
-            $data = Crypto::decrypt($text, $this->key);
+            $data = $this->decrypt($text);
             return $data;
         } else {
             return null;
@@ -29,8 +40,7 @@ class FileCryptDecorator {
 
     public function fwrite($text) 
     {
-        $data = Crypto::encrypt($text, $this->key);
-        echo "455".$data;
+        $data = $this->encrypt($text);
         // Перемещение указателя в конец файла
         $this->file->fseek(0, SEEK_END);
         $this->file->fwrite($data);
@@ -38,5 +48,16 @@ class FileCryptDecorator {
         clearstatcache(); // сбрасываем кеш, чтобы размер файла актуализировался
 
         return true;
+    }
+
+    
+    private function encrypt($data)
+    {
+        return openssl_encrypt($data, $this->method, $this->pass, true, $this->iv);
+    }
+
+    private function decrypt($data)
+    {
+        return openssl_decrypt($data, $this->method, $this->pass, true, $this->iv);
     }
 }
