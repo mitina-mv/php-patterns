@@ -14,7 +14,7 @@ class FileCryptDecorator
     public function __construct(
         SplFileObject $file, 
         string $pass, 
-        $method = "aes-256-cbc"
+        $method = "aes-128-cfb"
     ) {
         $this->file = $file;
         $this->pass = $pass;
@@ -53,11 +53,23 @@ class FileCryptDecorator
     
     private function encrypt($data)
     {
-        return openssl_encrypt($data, $this->method, $this->pass, true, $this->iv);
+        return openssl_encrypt(
+            $data, 
+            $this->method, 
+            $this->pass, 
+            0, 
+            $this->iv
+        );
     }
 
     private function decrypt($data)
     {
-        return openssl_decrypt($data, $this->method, $this->pass, true, $this->iv);
+        return openssl_decrypt(
+            $data, 
+            $this->method, 
+            $this->pass, 
+            0, 
+            $this->iv
+        );
     }
 }

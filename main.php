@@ -13,6 +13,6 @@ echo $read . "\n";
 
 $f2 = new SplFileObject('test-crypt.txt', 'w+');
 $file2 = new FileCryptDecorator($f2, 'KeY123');
-$file2->fwrite('Hi! These are secret messages!');
+$file2->fwrite('Привет! Я закодированный текст!');
 $read = $file2->fread();
 echo $read;
