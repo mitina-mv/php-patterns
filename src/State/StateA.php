@@ -3,15 +3,19 @@
 namespace MariaS431\Lr\State;
 
 class StateA extends State {
-    public function on(): State {
-        return new StateA();
+    public function on(Automaton $automaton)  {
+        $automaton->setState(new StateA());
     }
 
-    public function off(): State {
-        return new StateB();
+    public function off(Automaton $automaton) {
+        $automaton->setState(new StateB());
     }
 
-    public function ack(): State {
-        return new StateC();
+    public function ack(Automaton $automaton) {
+        $automaton->setState(new StateC());
+    }
+
+    public function toString() {
+        return "A";
     }
 }

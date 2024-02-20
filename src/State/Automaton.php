@@ -9,23 +9,23 @@ class Automaton {
         $this->currentState = $initialState;
     }
 
-    public function processCommand(string $command): void {
-        switch ($command) {
-            case 'on':
-                $this->currentState = $this->currentState->on();
-                break;
-            case 'off':
-                $this->currentState = $this->currentState->off();
-                break;
-            case 'ack':
-                $this->currentState = $this->currentState->ack();
-                break;
-            default:
-                echo "Invalid command: $command\n";
-        }
+    public function on() : void {
+        $this->currentState->on($this);
     }
 
-    public function getCurrentState(): State {
-        return $this->currentState;
+    public function off() : void {
+        $this->currentState->off($this);
+    }
+
+    public function ack() : void {
+        $this->currentState->ack($this);
+    }
+
+    public function getCurrentState() {
+        return $this->currentState->toString();
+    }
+
+    public function setState(State $state) {
+        $this->currentState = $state;
     }
 }

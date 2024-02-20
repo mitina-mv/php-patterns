@@ -8,17 +8,31 @@ $initialState = new StateB();
 $automaton = new Automaton($initialState);
 $arComands = ['on', 'off', 'off', 'ack', 'ack', 'ack', 'ack', 'on', 'off', 'off'];
 
-foreach($arComands as $comand)
+foreach($arComands as $command)
 {
-    $oldState = get_class($automaton->getCurrentState())[-1];
-    $automaton->processCommand($comand);
-    $curState = get_class($automaton->getCurrentState())[-1];
+    $oldState = $automaton->getCurrentState();
+    
+    switch ($command) {
+        case 'on':
+            $automaton->on();
+            break;
+        case 'off':
+            $automaton->off();
+            break;
+        case 'ack':
+            $automaton->ack();
+            break;
+        default:
+            echo "Invalid command: $command\n";
+    }
+    
+    
+    $curState = $automaton->getCurrentState();
 
     if($oldState == $curState)
     {
         echo "undefined combo \n";
     } else {
-        echo "{$oldState}, {$comand} => {$curState} \n";
+        echo "{$oldState}, {$command} => {$curState} \n";
     }
-
 }
