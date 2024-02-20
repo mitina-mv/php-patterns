@@ -1,0 +1,16 @@
+{
+    "name": "maria-s431/lr",
+    "description": "Реализация паттернов ООП по дисциплине АПС",
+    "autoload": {
+        "psr-4": {
+            "MariaS431\\Lr\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Maria",
+            "email": "mit.maria2019@yandex.ru"
+        }
+    ],
+    "require": {}
+}
