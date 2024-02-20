@@ -1,10 +1,6 @@
 <?php
 
-namespace MariaS432\LR3;
-
-require_once('State.php');
-require_once('StateA.php');
-require_once('StateC.php');
+namespace MariaS431\Lr\State;
 
 class StateB extends State 
 {

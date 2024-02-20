@@ -1,6 +1,6 @@
 <?php
 
-namespace MariaS431\Lr2;
+namespace MariaS431\Lr\Decorator;
 
 use SplFileObject;
 

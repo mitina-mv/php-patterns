@@ -1,8 +1,6 @@
 <?php
 
-namespace MariaS432\LR3;
-
-require_once('State.php');
+namespace MariaS431\Lr\State;
 
 class Automaton {
     private State $currentState;

@@ -1,9 +1,8 @@
 <?php
-require('./src/FileBase64Decorator.php');
-require('./src/FileCryptDecorator.php');
+require_once('./vendor/autoload.php');
 
-use MariaS431\Lr2\FileBase64Decorator;
-use MariaS431\Lr2\FileCryptDecorator;
+use MariaS431\Lr\Decorator\FileBase64Decorator;
+use MariaS431\Lr\Decorator\FileCryptDecorator;
 
 $f1 = new SplFileObject('test.txt', 'w+');
 $file = new FileBase64Decorator($f1);

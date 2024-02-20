@@ -1,10 +1,8 @@
 <?php
+require_once('./vendor/autoload.php');
 
-require_once('./src/Automaton.php');
-require_once('./src/StateB.php');
-
-use MariaS432\LR3\Automaton;
-use MariaS432\LR3\StateB;
+use MariaS431\Lr\State\Automaton;
+use MariaS431\Lr\State\StateB;
 
 $initialState = new StateB();
 $automaton = new Automaton($initialState);

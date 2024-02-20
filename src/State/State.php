@@ -1,6 +1,6 @@
 <?php
 
-namespace MariaS432\LR3;
+namespace MariaS431\Lr\State;
 
 abstract class State {
     abstract public function on();
