@@ -4,11 +4,11 @@ namespace MariaS431\Lr\Decorator;
 
 use SplFileObject;
 
-class FileBase64Decorator {
-    private $file;
-
+class FileBase64Decorator extends FileDecorator 
+{
+    
     public function __construct(SplFileObject $file) {
-        $this->file = $file;
+        parent::__construct($file);
     }
 
     public function fread() 
@@ -35,5 +35,10 @@ class FileBase64Decorator {
         clearstatcache(); // сбрасываем кеш, чтобы размер файла актуализировался
 
         return true;
+    }
+
+    public function __toString()
+    {
+        return $this->file->getPath();
     }
 }

@@ -4,9 +4,8 @@ namespace MariaS431\Lr\Decorator;
 
 use SplFileObject;
 
-class FileCryptDecorator
+class FileCryptDecorator extends FileDecorator
 {
-    private $file;
     private $pass;
     private $iv;
     private $method;
@@ -16,7 +15,7 @@ class FileCryptDecorator
         string $pass, 
         $method = "aes-128-cfb"
     ) {
-        $this->file = $file;
+        parent::__construct($file);
         $this->pass = $pass;
         $this->method = $method;
 
@@ -71,5 +70,10 @@ class FileCryptDecorator
             0, 
             $this->iv
         );
+    }
+
+    public function __toString()
+    {
+        return $this->file->getPath();
     }
 }
