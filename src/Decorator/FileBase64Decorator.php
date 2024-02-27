@@ -4,20 +4,17 @@ namespace MariaS431\Lr\Decorator;
 
 use SplFileObject;
 
-class FileBase64Decorator extends FileDecorator 
+class FileBase64Decorator extends BaseFileDecorator 
 {
-    
-    public function __construct(SplFileObject $file) {
-        parent::__construct($file);
-    }
+    public function __construct(protected BaseFileDecorator $decorator) {}
 
-    public function fread() 
+    public function fread($fileSize = 0) 
     {
-        $fileSize = $this->file->getSize();
+        $fileSize = $this->decorator->file->getSize();
 
         if ($fileSize > 0) {
-            $this->file->rewind();
-            $text = $this->file->fread($fileSize);
+            $this->decorator->rewind();
+            $text = $this->decorator->fread($fileSize);
             $data = base64_decode($text);
             return $data;
         } else {
@@ -29,16 +26,26 @@ class FileBase64Decorator extends FileDecorator
     {
         $data = base64_encode($text);
         // Перемещение указателя в конец файла
-        $this->file->fseek(0, SEEK_END);
-        $this->file->fwrite($data);
+        $this->decorator->fseek();
+        $this->decorator->fwrite($data);
 
         clearstatcache(); // сбрасываем кеш, чтобы размер файла актуализировался
 
         return true;
     }
 
-    public function __toString()
+    public function fseek()
     {
-        return $this->file->getPath();
+        $this->decorator->fseek();
+    }
+
+    public function rewind()
+    {
+        $this->decorator->rewind();
+    }
+
+    public function getSize()
+    {
+        return $this->decorator->getSize();
     }
 }

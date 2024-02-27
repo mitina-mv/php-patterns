@@ -4,32 +4,27 @@ namespace MariaS431\Lr\Decorator;
 
 use SplFileObject;
 
-class FileCryptDecorator extends FileDecorator
+class FileCryptDecorator extends BaseFileDecorator
 {
     private $pass;
     private $iv;
-    private $method;
+    private $method = "aes-128-cfb";
 
-    public function __construct(
-        SplFileObject $file, 
-        string $pass, 
-        $method = "aes-128-cfb"
-    ) {
-        parent::__construct($file);
+    public function __construct(string $pass, protected BaseFileDecorator $decorator) 
+    {
         $this->pass = $pass;
-        $this->method = $method;
 
         $iv_length = openssl_cipher_iv_length($this->method);
         $this->iv = openssl_random_pseudo_bytes($iv_length);
     }
 
-    public function fread() 
+    public function fread($fileSize = 0) 
     {
-        $fileSize = $this->file->getSize();
+        $fileSize = $this->decorator->getSize();
 
         if ($fileSize > 0) {
-            $this->file->rewind();
-            $text = $this->file->fread($fileSize);
+            $this->decorator->rewind();
+            $text = $this->decorator->fread($fileSize);
             $data = $this->decrypt($text);
             return $data;
         } else {
@@ -41,8 +36,8 @@ class FileCryptDecorator extends FileDecorator
     {
         $data = $this->encrypt($text);
         // Перемещение указателя в конец файла
-        $this->file->fseek(0, SEEK_END);
-        $this->file->fwrite($data);
+        $this->decorator->fseek();
+        $this->decorator->fwrite($data);
 
         clearstatcache(); // сбрасываем кеш, чтобы размер файла актуализировался
 
@@ -71,9 +66,19 @@ class FileCryptDecorator extends FileDecorator
             $this->iv
         );
     }
-
-    public function __toString()
+    
+    public function fseek()
     {
-        return $this->file->getPath();
+        $this->decorator->fseek();
+    }
+
+    public function rewind()
+    {
+        $this->decorator->rewind();
+    }
+
+    public function getSize()
+    {
+        return $this->decorator->getSize();
     }
 }
