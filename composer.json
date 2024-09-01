@@ -12,5 +12,10 @@
             "email": "mit.maria2019@yandex.ru"
         }
     ],
-    "require": {}
+    "require-dev": {
+        "phpunit/phpunit": "^10.5"
+    },
+    "scripts": {
+        "test-unit": "vendor/bin/phpunit --colors=always"
+    }
 }
