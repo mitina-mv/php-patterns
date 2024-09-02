@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace MariaS431\Lr\Singleton;
+namespace MariaS431\Test\Singleton;
 
+use MariaS431\Lr\Singleton\Logger;
 use PHPUnit\Framework\TestCase;
 
 class MainTest extends TestCase 
@@ -19,6 +20,9 @@ class MainTest extends TestCase
 
     public function testLogMessage()
     {
+        file_put_contents(__DIR__.'/../../src/Singleton/log.txt', '');
+        $initialLineCount = $this->getLogFileLineCount();
+
         $firstLogger = Logger::getInstance();
 
         $firstLogger->log('Первая строка лога');
@@ -26,5 +30,16 @@ class MainTest extends TestCase
 
         $secondLogger = Logger::getInstance();
         $secondLogger->log('Еще одна строка лога');
+
+        $finalLineCount = $this->getLogFileLineCount();
+
+        $this->assertEquals($initialLineCount + 3, $finalLineCount);
+    }
+
+    private function getLogFileLineCount(): int
+    {
+        $logFile = new \SplFileObject(__DIR__.'/../../src/Singleton/log.txt', 'r');
+        $logFile->seek(PHP_INT_MAX);
+        return $logFile->key() + 1;
     }
 }
