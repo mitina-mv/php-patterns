@@ -11,10 +11,12 @@
 Вариант реализации простейшего класса логирования. 
 
 [Тесты](/test/Singleton/MainTest.php)
+
 2. [Фабричный метод (Factory Method)](/src/FactoryMethod/)
 Читатель различных форматов документов. 
 
 [Тесты](/test/FactoryMethod/Test.php)
+
 3. [Строитель (Builder)](/src/Builder)
 Изготовление различных стандартных завтраков в кафе. 
 
