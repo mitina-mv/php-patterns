@@ -3,7 +3,7 @@
     "description": "Реализация паттернов ООП по дисциплине АПС",
     "autoload": {
         "psr-4": {
-            "MariaS431\\Lr\\": "src/",
+            "MariaS431\\Lr\\": "src/"
         }
     },
     "authors": [
