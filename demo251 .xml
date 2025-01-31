@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2024-12-14 16:35:41">
+    <shop>
+        <name>Тестовые товары</name>
+        <company>Test</company>
+        <url>https://test.ru/</url>
+        <currencies>
+            <currency id="RUR" rate="1" plus="0"/>
+        </currencies>
+        <categories>
+            <category id="6501" url="https://test.ru/catalog/tovary_dlya_sobak/">Товары для собак</category>
+            <category id="6502" parentId="6501" url="https://test.ru/catalog/luchshij-suhoj-korm-dlja-sobak/">Сухие корма для собак</category>
+            <category id="8766" parentId="6501" url="https://test.ru/catalog/lechebnyj-korm-dlja-sobak/">Лечебные корма для собак</category>
+        </categories>
+        <offers>
+            <offer id="571334" available="true">
+                <url>https://test.ru/catalog/royal_canin_dlya_vzroslykh_sobak_krupnykh_porod/1722/</url>
+                <price>1220.00</price>
+                <currencyId>RUR</currencyId>
+                <categoryId>6502</categoryId>
+                <picture>https://test.ru/upload/resize_cache/iblock/999/160_160_0/ROYAL_CANIN_MAXI_ADULT_122235_122150_122308.jpg</picture>
+                <delivery>true</delivery>
+                <name>Royal CANIN MAXI ADULT для взрослых собак крупных пород (3 кг)</name>
+				<vendorCode>A1234567B</vendorCode>
+                <brand id="81185">Royal CANIN</brand>
+                <description>Полнорационный сухой корм для взрослых собак крупных пород (вес собаки от 25 до 45 кг) в возрасте от 15 месяцев до 5 лет.<br>
+    Корм разработан для поддержания здоровья и активности крупных пород.
+    <h2>Состав корма:</h2>
+    <ul>
+        <li>Мясо (курица, говядина) - 30%</li>
+        <li>Злаки (рис, кукуруза) - 25%</li>
+        <li>Овощи (морковь, горох) - 15%</li>
+        <li>Витамины и минералы - 10%</li>
+        <li>Прочие ингредиенты - 20%</li>
+    </ul><br>
+    Без искусственных красителей и консервантов. Подходит для ежедневного кормления.<br>
+    {"product":{"name":"Полнорационный сухой корм для взрослых собак крупных пород","weight_range":"25-45 кг","age_range":"15 месяцев - 5 лет","composition":{"meat":"30%","grains":"25%","vegetables":"15%","vitamins_and_minerals":"10%"},"features":["Сбалансированный состав","Без искусственных добавок","Для ежедневного кормления"]}}
+</description>
+                <param filter="true" name="Класс корма">Супер-премиум</param>
+                <param filter="true" name="Торговая марка">Royal Canin</param>
+                <param filter="true" name="Возраст питомца">Взрослый</param>
+                <param filter="true" name="Товары со скидкой">Y</param>
+                <param filter="true" name="Назначение товара">Стандартный</param>
+                <param filter="true" name="Упаковка">Пакет</param>
+                <param filter="true" name="Состав корма (мясо, рыба)">Мясное ассорти</param>
+                <param filter="true" name="Состав корма (растения)">Кукуруза, пшеница</param>
+                <param filter="true" name="Порода питомца">Для всех пород</param>
+                <param filter="true" name="Животное">Собаки</param>
+                <param filter="true" name="Вес (кг)">3</param>
+                <presence>Есть в наличии</presence>
+            </offer>
+			<offer id="588119" available="true">
+                <url>https://test.ru/catalog/royal_canin_dlya_vzroslykh_sobak_melkikh_porod/2046/</url>
+                <price>675.00</price>
+                <currencyId>RUR</currencyId>
+                <categoryId>6502</categoryId>
+                <picture>https://test.ru/upload/resize_cache/iblock/b4b/160_160_0/ROYAL_CANIN_MINI_EXIGENT_313008_312001_313020_313030.jpg</picture>
+                <delivery>true</delivery>
+                <name>Royal CANIN MINI EXIGENT для привередливых взрослых собак маленьких пород (1 кг)</name>
+                <brand id="81185">Royal CANIN</brand>
+<description>
+    Смартфон с диагональю экрана 6.5 дюймов, 128 ГБ встроенной памяти и 8 ГБ оперативной памяти.<br>
+    Основная камера: 48 МП + 12 МП + 5 МП, фронтальная камера: 16 МП.<br>
+    Батарея: 5000 мАч, поддержка быстрой зарядки 30 Вт.<br>
+    Операционная система: Android 12, процессор: Snapdragon 778G.<br>
+    {"product":{"name":"Смартфон","display":"6.5 дюймов","storage":"128 ГБ","ram":"8 ГБ","cameras":{"main":"48 МП + 12 МП + 5 МП","front":"16 МП"},"battery":"5000 мАч","fast_charging":"30 Вт","os":"Android 12","processor":"Snapdragon 778G"}}
+</description>
+                <param filter="true" name="Класс корма">Супер-премиум</param>
+                <param filter="true" name="Торговая марка">Royal Canin</param>
+                <param filter="true" name="Возраст питомца">Взрослый</param>
+                <param filter="true" name="Товары со скидкой">Y</param>
+                <param filter="true" name="Назначение товара">Привередливые</param>
+                <param filter="true" name="Упаковка">Пакет</param>
+                <param filter="true" name="Состав корма (мясо, рыба)">Птица</param>
+                <param filter="true" name="Состав корма (растения)">Рис</param>
+                <param filter="true" name="Порода питомца">Для всех пород</param>
+                <param filter="true" name="Животное">Собаки</param>
+                <param filter="true" name="Вес (кг)">1</param>
+                <presence>Есть в наличии</presence>
+            </offer>
+            
+        </offers>
+    </shop>
+</yml_catalog>
